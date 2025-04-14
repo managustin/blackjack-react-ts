@@ -12,6 +12,17 @@
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+
+  /* Custom game colors */
+  --game-bg: #1a472a;
+  --card-bg: #ffffff;
+  --text-primary: #ffffff;
+  --button-primary: #2563eb;
+  --button-primary-hover: #1d4ed8;
+  --button-secondary: #ca8a04;
+  --button-secondary-hover: #a16207;
+  --button-success: #22c55e;
+  --button-success-hover: #16a34a;
 }
 
 a {
@@ -53,6 +64,66 @@ button:hover {
 button:focus,
 button:focus-visible {
   outline: 4px auto -webkit-focus-ring-color;
+}
+
+@keyframes dealCard {
+  0% {
+    opacity: 0;
+    transform: translate(-50%, -100%) rotate(-180deg);
+  }
+  70% {
+    opacity: 1;
+    transform: translate(0, 10%) rotate(5deg);
+  }
+  85% {
+    transform: translate(0, -5%) rotate(-2deg);
+  }
+  100% {
+    transform: translate(0, 0) rotate(0);
+  }
+}
+
+@keyframes slideIn {
+  0% {
+    opacity: 0;
+    transform: translate(-100%, 20%) rotate(-30deg);
+  }
+  60% {
+    opacity: 1;
+  }
+  100% {
+    transform: translate(0, 0) rotate(0);
+  }
+}
+
+.deal-animation {
+  animation: dealCard 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+}
+
+.slide-animation {
+  animation: slideIn 0.4s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+}
+
+.card-enter {
+  opacity: 0;
+  transform: translateX(-100px);
+}
+
+.card-enter-active {
+  opacity: 1;
+  transform: translateX(0);
+  transition: all 300ms ease-out;
+}
+
+/* Estilos para el dorso de la carta */
+.card-back {
+  font-size: 2.5rem;
+  line-height: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
 }
 
 @media (prefers-color-scheme: light) {

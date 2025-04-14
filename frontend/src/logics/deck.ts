@@ -1,4 +1,3 @@
-import { suite } from "node:test";
 import Card from "./card";
 import { IDealable, Suit } from "./types";
 import { shuffleArray } from "./utils";
